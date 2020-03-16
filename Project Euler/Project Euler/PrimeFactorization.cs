@@ -11,7 +11,7 @@ namespace Project_Euler
             int p = 2;
             List<int> primeFactors = new List<int>();
 
-            while (numberToFactorize >= p * p)
+            while(numberToFactorize >= p * p)
             {
                 if (numberToFactorize % p == 0)
                 {

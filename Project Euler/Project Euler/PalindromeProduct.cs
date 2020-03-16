@@ -37,7 +37,6 @@ namespace Project_Euler
                 return false;
             }
 
-
             return PalindromeHelper(productString[1..^1]);
         }
 
