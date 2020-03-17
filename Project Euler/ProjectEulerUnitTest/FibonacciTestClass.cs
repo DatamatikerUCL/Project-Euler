@@ -20,6 +20,14 @@ namespace ProjectEulerUnitTest
         }
 
         [TestMethod]
+        public void FibonacciNumberGenerationTimeTest()
+        {
+            int upperLimit = 123456;
+
+            List<int> fibonnaciSequence = Fibonacci.GenerateFibonacciNumbers(upperLimit);
+        }
+
+        [TestMethod]
         public void FibonacciNumberGenerationValueTest()
         {
             int upperLimit = 100;
