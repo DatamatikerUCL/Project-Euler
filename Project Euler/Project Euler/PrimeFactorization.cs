@@ -27,5 +27,23 @@ namespace Project_Euler
             primeFactors.Add((int) numberToFactorize);
             return primeFactors;
         }
+
+        public static void FactorizeRecursively(int v, ref List<int> primeFactors)
+        {
+            int i = 2;
+            if (v == 1)
+            {
+                return;
+            }
+
+            while (v % i != 0)
+            {
+                i++;
+            }
+
+            primeFactors.Add(i);
+            FactorizeRecursively(v / i, ref primeFactors);
+
+        }
     }
 }
