@@ -20,6 +20,12 @@ namespace Project_Euler
 
             Console.WriteLine("Smallest multiple:");
             Console.WriteLine(SmallestMultiple.CalculateSmallestMultiple(1, 20));
+
+            Console.WriteLine("Sum square difference");
+            Console.WriteLine(SumSquareDifference.CalculateSumSquareDifference(1, 100));
+
+            Console.WriteLine("10001st prime");
+            Console.WriteLine(PrimeCalculator.CalculatePrime(10001));
         }
     }
 }
