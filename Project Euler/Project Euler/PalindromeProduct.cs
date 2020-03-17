@@ -18,8 +18,7 @@ namespace Project_Euler
         {
             string productString = product.ToString();
 
-            bool isPalindrome = PalindromeHelper(productString);
-            return isPalindrome;
+            return PalindromeHelper(productString);
         }
 
         private static bool PalindromeHelper(string productString)
@@ -44,9 +43,9 @@ namespace Project_Euler
         {
             int product = int.MinValue;
 
-            for (int i = (int)Math.Pow(10, digits - 1); i <= LargestNumberWithAmountOfDigits(digits); i++)
+            for (int i = (int)Math.Pow(10, digits - 1); i <= (int)Math.Pow(10, digits) - 1; i++)
             {
-                for (int j = (int) Math.Pow(10, digits - 1)  ; j <= LargestNumberWithAmountOfDigits(digits); j++)
+                for (int j = (int) Math.Pow(10, digits - 1)  ; j <= (int)Math.Pow(10, digits) - 1; j++)
                 {
                     if (IsProductPalindrome(j * i) && j * i > product)
                     {
