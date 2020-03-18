@@ -14,7 +14,7 @@ namespace Project_Euler
             {
                 foreach (int number in multiples)
                 {
-                    if (i%number == 0)
+                    if (i % number == 0)
                     {
                         sum += i;
                         break;

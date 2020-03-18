@@ -6,26 +6,43 @@ namespace Project_Euler
 {
     public class LargestProductInSeries
     {
-        public static int FindLargestProduct(int adjacentDigits, string stringToCheck)
+        public static long FindLargestProduct(int adjacentDigits, string stringToCheck)
         {
-            int largestProduct = int.MinValue;
+            long product = Slice(stringToCheck, 0, adjacentDigits);
+            long largestProduct = product;
 
-            for (int i = 0; i < stringToCheck.Length - adjacentDigits; i++)
+            for (int i = adjacentDigits; i <= stringToCheck.Length - adjacentDigits; i++)
             {
-                int product = 1;
+                int pre = int.Parse(stringToCheck[i - adjacentDigits].ToString());
+                int cur = int.Parse( stringToCheck[i].ToString());
 
-                for (int j = 0; j < adjacentDigits; j++)
+                if (pre != 0)
                 {
-                    product *= int.Parse(stringToCheck[i + j].ToString());
+                    product = product * cur / pre;
+                }
+                else
+                {
+                    product = Slice(stringToCheck, i - adjacentDigits + 1, adjacentDigits);
                 }
 
-                if (product > largestProduct)
-                {
-                    largestProduct = product;
-                }
+                largestProduct = Math.Max(product, largestProduct);
             }
+
 
             return largestProduct;
         }
+
+        private static long Slice(string str, int i, int n)
+        {
+            long product = 1;
+
+            for (int j = 0; j < n; j++)
+            {
+                product *= int.Parse(str[i + j].ToString());
+            }
+
+            return product;
+        }
+
     }
 }

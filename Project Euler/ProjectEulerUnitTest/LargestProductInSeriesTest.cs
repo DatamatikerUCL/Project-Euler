@@ -36,7 +36,7 @@ namespace ProjectEulerUnitTest
             int adjacentDigits = 4;
             int expected = 5832;
 
-            int largestProduct = LargestProductInSeries.FindLargestProduct(adjacentDigits, _thousandDigitNumberString);
+            long largestProduct = LargestProductInSeries.FindLargestProduct(adjacentDigits, _thousandDigitNumberString);
 
             Assert.AreEqual(expected, largestProduct);
         }
@@ -47,7 +47,18 @@ namespace ProjectEulerUnitTest
             int adjacentDigits = 2;
             int expected = 81;
 
-            int largestProduct = LargestProductInSeries.FindLargestProduct(adjacentDigits, _thousandDigitNumberString);
+            long largestProduct = LargestProductInSeries.FindLargestProduct(adjacentDigits, _thousandDigitNumberString);
+
+            Assert.AreEqual(expected, largestProduct);
+        }
+
+        [TestMethod]
+        public void LargestProductThreeDigitsTest()
+        {
+            int adjacentDigits = 3;
+            int expected = 9 * 9 * 8;
+
+            long largestProduct = LargestProductInSeries.FindLargestProduct(adjacentDigits, _thousandDigitNumberString);
 
             Assert.AreEqual(expected, largestProduct);
         }
