@@ -65,7 +65,7 @@ namespace ProjectEulerUnitTest
         [TestMethod]
         public void TimeTestIterativePrimeFactorTest()
         {
-            List<int> primeFactors = PrimeFactorization.Factorize(2136549879);
+            PrimeFactorization.Factorize(2136549879);
         }
 
         [TestMethod]
