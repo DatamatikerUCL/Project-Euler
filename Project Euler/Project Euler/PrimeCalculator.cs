@@ -26,6 +26,21 @@ namespace Project_Euler
             return currentPrime;
         }
 
+        internal static List<int> CalculatePrimesInSpan(int lowerBoundary, int upperBoundary)
+        {
+            List<int> primes = new List<int>();
+
+            for (int i = lowerBoundary; i < upperBoundary; i++)
+            {
+                if (IsPrime(i))
+                {
+                    primes.Add(i);
+                }
+            }
+
+            return primes;
+        }
+
         public static bool IsPrime(int prime)
         {
             bool isPrime = true;

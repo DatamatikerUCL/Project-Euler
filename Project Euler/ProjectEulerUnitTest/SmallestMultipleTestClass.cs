@@ -15,7 +15,7 @@ namespace ProjectEulerUnitTest
             int lowerBoundary = 1;
             int upperBoundary = 10;
 
-            int result = SmallestMultiple.CalculateSmallestMultiple(lowerBoundary, upperBoundary);
+            double result = SmallestMultiple.CalculateSmallestMultiple(lowerBoundary, upperBoundary);
 
             Assert.AreEqual(2520, result);
         }
@@ -26,9 +26,19 @@ namespace ProjectEulerUnitTest
             int lowerBoundary = 1;
             int upperBoundary = 3;
 
-            int result = SmallestMultiple.CalculateSmallestMultiple(lowerBoundary, upperBoundary);
+            double result = SmallestMultiple.CalculateSmallestMultiple(lowerBoundary, upperBoundary);
 
             Assert.AreEqual(6, result);
+        }
+
+        [TestMethod]
+        public void SmallestMultipleTimeTest()
+        {
+            int lowerBoundary = 1;
+            int upperBoundary = 20;
+
+            double result = SmallestMultiple.CalculateSmallestMultiple(lowerBoundary, upperBoundary);
+
         }
     }
 }

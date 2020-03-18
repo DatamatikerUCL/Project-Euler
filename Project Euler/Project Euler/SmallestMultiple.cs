@@ -8,26 +8,22 @@ namespace Project_Euler
     {
         public static int CalculateSmallestMultiple(int lowerBoundary, int upperBoundary)
         {
-            List<int> numbers = new List<int>();
-            int result = upperBoundary;
-            for (int i = lowerBoundary; i <= upperBoundary; i++)
-            {
-                numbers.Add(i);
-            }
+            List<int> primesInBoundary = PrimeCalculator.CalculatePrimesInSpan(lowerBoundary, upperBoundary + 1);
 
-            bool isMultiple;
-            do
+            int sqrtUpperBoundary = (int) Math.Sqrt(upperBoundary);
+            int answer = 1;
+
+            foreach (int prime in primesInBoundary)
             {
-                isMultiple = true;
-                result++;
-                foreach (int number in numbers)
+                if (prime <= sqrtUpperBoundary)
                 {
-                    isMultiple = isMultiple && result % number == 0;
+                    answer *= (int) Math.Pow(prime, (int)(Math.Log(upperBoundary) / Math.Log(prime)));
                 }
+                else
+                    answer *= prime;
             }
-            while (!isMultiple);
 
-            return result;
+            return answer;
         }
     }
 }
