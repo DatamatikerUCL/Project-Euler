@@ -55,6 +55,9 @@ namespace Project_Euler
 
             Console.WriteLine("Special Pythagorean triplet:");
             Console.WriteLine(PythagoreanTriplet.CalculateTripletWithSum(1000));
+
+            Console.WriteLine("Summation of primes:");
+            Console.WriteLine(PrimeCalculator.SummationOfPrimes(2000000));
         
         }
     }
