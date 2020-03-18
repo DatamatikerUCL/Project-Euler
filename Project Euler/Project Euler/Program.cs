@@ -52,6 +52,9 @@ namespace Project_Euler
 
             Console.WriteLine("Largest product in a series");
             Console.WriteLine(LargestProductInSeries.FindLargestProduct(13, _thousandDigitNumberString));
+
+            Console.WriteLine("Special Pythagorean triplet:");
+            Console.WriteLine(PythagoreanTriplet.CalculateTripletWithSum(1000));
         
         }
     }
