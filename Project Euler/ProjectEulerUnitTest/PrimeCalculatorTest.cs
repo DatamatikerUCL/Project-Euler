@@ -54,7 +54,7 @@ namespace ProjectEulerUnitTest
         public void SieveOfEratosthenesTestOne()
         {
             int expectedHighestPrime = 19;
-            int calculatedPrime = PrimeCalculator.SieveOfEratosthenes(20)[^1];
+            long calculatedPrime = PrimeCalculator.SieveOfEratosthenes(20)[^1];
 
             Assert.AreEqual(expectedHighestPrime, calculatedPrime);
         }
@@ -63,7 +63,7 @@ namespace ProjectEulerUnitTest
         public void SieveOfEratosthenesTestTwo()
         {
             int expectedHighestPrime = 47;
-            int calculatedPrime = PrimeCalculator.SieveOfEratosthenes(50)[^1];
+            long calculatedPrime = PrimeCalculator.SieveOfEratosthenes(50)[^1];
 
             Assert.AreEqual(expectedHighestPrime, calculatedPrime);
         }
@@ -82,7 +82,7 @@ namespace ProjectEulerUnitTest
             int expectedSum = 17;
             int n = 10;
 
-            int calculatedResult = PrimeCalculator.SummationOfPrimes(n);
+            long calculatedResult = PrimeCalculator.SummationOfPrimes(n);
 
             Assert.AreEqual(expectedSum, calculatedResult);
         }
@@ -93,7 +93,7 @@ namespace ProjectEulerUnitTest
             int expectedSum = 10;
             int n = 6;
 
-            int calculatedResult = PrimeCalculator.SummationOfPrimes(n);
+            long calculatedResult = PrimeCalculator.SummationOfPrimes(n);
 
             Assert.AreEqual(expectedSum, calculatedResult);
         }

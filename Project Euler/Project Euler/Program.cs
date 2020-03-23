@@ -58,7 +58,7 @@ namespace Project_Euler
 
             Console.WriteLine("Summation of primes:");
             Console.WriteLine(PrimeCalculator.SummationOfPrimes(2000000));
-        
+
         }
     }
 }

@@ -11,7 +11,8 @@ namespace Project_Euler
             long product = Slice(stringToCheck, 0, adjacentDigits);
             long largestProduct = product;
 
-            for (int i = adjacentDigits; i <= stringToCheck.Length - adjacentDigits; i++)
+
+            for (int i = adjacentDigits; i <= stringToCheck.Length - adjacentDigits + 1; i++)
             {
                 int pre = int.Parse(stringToCheck[i - adjacentDigits].ToString());
                 int cur = int.Parse( stringToCheck[i].ToString());
