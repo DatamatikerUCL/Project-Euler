@@ -25,27 +25,34 @@ namespace Project_Euler
 
             long largestDiagonal = CalculateLargestDiagonal(intMatrix, adjacentNumbers);
 
+            largestProduct = Math.Max(largestDiagonal, largestProduct);
             return largestProduct;
         }
 
         private static long CalculateLargestDiagonal(int[][] intMatrix, int adjacentNumbers)
         {
-            int[] diagonal = new int[intMatrix[0].Length];
+            int matrixSize = intMatrix[0].Length;
+            int[] diagonal = new int[matrixSize];
+            int[] diagonalAbove = new int[matrixSize];
 
-            for (int i = 0; i < intMatrix[0].Length; i++)
+            for (int i = 0; i < matrixSize; i++)
             {
                 diagonal[i] = intMatrix[i][i];
             }
 
             long largestProduct = LargestProductInSeries.FindLargestProduct(adjacentNumbers, diagonal);
 
-            for (int i = 1; i < intMatrix[0].Length - adjacentNumbers; i++)
+            for (int i = 1; i <= matrixSize - adjacentNumbers; i++)
             {
-                for (int j = 0; j < intMatrix[0].Length - i; j++)
+                for (int j = 0; j < matrixSize - i; j++)
                 {
                     diagonal[j] = intMatrix[i][j];
-
+                    diagonalAbove[j] = intMatrix[j][i+j];
                 }
+                long tempProduct = LargestProductInSeries.FindLargestProduct(adjacentNumbers, diagonal);
+                long tempProductTwo = LargestProductInSeries.FindLargestProduct(adjacentNumbers, diagonalAbove);
+                largestProduct = Math.Max(Math.Max(tempProduct, tempProductTwo), largestProduct);
+            
             }
 
             return largestProduct;
