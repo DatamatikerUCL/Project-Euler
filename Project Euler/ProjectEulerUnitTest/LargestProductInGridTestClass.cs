@@ -119,5 +119,24 @@ namespace ProjectEulerUnitTest
 
             Assert.AreEqual(largestProduct, calculatedProduct);
         }
+
+        [TestMethod]
+        public void LargestProductInDiagonalTestFour()
+        {
+            int[][] intMatrix = new int[5][];
+
+            intMatrix[0] = new int[] { 12, 50, 10, 2, 69 };
+            intMatrix[1] = new int[] { 10, 51, 23, 59, 1 };
+            intMatrix[2] = new int[] { 10, 1, 5, 50, 8 };
+            intMatrix[3] = new int[] { 2, 56, 23, 23, 56 };
+            intMatrix[4] = new int[] { 12, 4, 456, 23, 256 };
+
+            int adjacentNumbers = 3;
+            long largestProduct = 456 * 23 * 256;
+
+            long calculatedProduct = LargestProductInGrid.CalculateLargestProduct(intMatrix, adjacentNumbers);
+
+            Assert.AreEqual(largestProduct, calculatedProduct);
+        }
     }
 }

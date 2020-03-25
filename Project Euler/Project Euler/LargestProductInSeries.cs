@@ -35,39 +35,24 @@ namespace Project_Euler
 
         public static long FindLargestProduct(int adjacentDigits, int[] arrayToCheck)
         {
-            long product = Slice(arrayToCheck, 0, adjacentDigits);
-            long largestProduct = product;
+            long largestProduct = int.MinValue;
+            
 
-            for (int i = adjacentDigits; i <= arrayToCheck.Length - adjacentDigits +1; i++)
+            for (int i = 0; i < arrayToCheck.Length - adjacentDigits + 1; i++)
             {
-                int pre = arrayToCheck[i - adjacentDigits];
-                int cur = arrayToCheck[i];
-
-                if (pre != 0)
+                long tempProduct = 1;
+                for (int j = 0; j < adjacentDigits; j++)
                 {
-                    product = product * cur / pre;
-                }
-                else
-                {
-                    product = Slice(arrayToCheck, i - adjacentDigits + 1, adjacentDigits);
+                    tempProduct *= arrayToCheck[i + j];
                 }
 
-                largestProduct = Math.Max(product, largestProduct);
+                if (tempProduct > largestProduct)
+                {
+                    largestProduct = tempProduct;
+                }
             }
 
             return largestProduct;
-        }
-
-        private static long Slice(int[] array, int i, int n)
-        {
-            long product = 1;
-
-            for (int j = 0; j < n; j++)
-            {
-                product *= array[i + j];
-            }
-
-            return product;
         }
 
         private static long Slice(string str, int i, int n)

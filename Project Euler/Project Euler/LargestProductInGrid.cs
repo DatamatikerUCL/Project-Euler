@@ -7,24 +7,62 @@ namespace Project_Euler
 {
     public class LargestProductInGrid
     {
-        public static long CalculateLargestProduct(int[][] intMatrix, int adjacentNumbers)
+        public static long CalculateLargestProduct(int[][] intMatrix, int numbersInProduct)
         {
-            long largestProduct = int.MinValue;
-            string separationString = string.Empty;
+            long largestProduct = 0;
+            int matrixLength = intMatrix[0].Length;
 
-            for (int i = 0; i < intMatrix[0].Length; i++)
+            for (int col = 0; col < matrixLength; col++)
             {
-                long tempRowResult = LargestProductInSeries.FindLargestProduct(adjacentNumbers, intMatrix[i]);
+                for (int row = 0; row < matrixLength; row++)
+                {
+                    long tempProd;
 
-                int[] currentCoulmn = intMatrix.Select(row => row[i]).ToArray();
-                long tempColumnResult = LargestProductInSeries.FindLargestProduct(adjacentNumbers, currentCoulmn);
+                    // Check vertically
+                    if (row <= matrixLength - numbersInProduct)
+                    {
+                        tempProd = intMatrix[col][row];
+                        for (int i = 1; i < numbersInProduct; i++)
+                        {
+                            tempProd *= intMatrix[col][row + i];
+                        }
+                        largestProduct = Math.Max(largestProduct, tempProd);
+                    }
 
-                largestProduct = Math.Max(Math.Max(tempColumnResult, tempRowResult), largestProduct);
+                    // Check horisontally
+                    if (col <= matrixLength - numbersInProduct)
+                    {
+                        tempProd = intMatrix[col][row];
+                        for (int i = 1; i < numbersInProduct; i++)
+                        {
+                            tempProd *= intMatrix[col + i][row];
+                        }
+                        largestProduct = Math.Max(largestProduct, tempProd);
+                    }
+
+                    // Check diagonally upwards/forwards
+                    if (col <= matrixLength - numbersInProduct && row >= numbersInProduct)
+                    {
+                        tempProd = intMatrix[col][row];
+                        for (int i = 1; i < numbersInProduct; i++)
+                        {
+                            tempProd *= intMatrix[col + i][row - i];
+                        }
+                        largestProduct = Math.Max(largestProduct, tempProd);
+                    }
+
+                    if (row <= matrixLength - numbersInProduct && col <= matrixLength - numbersInProduct )
+                    {
+                        tempProd = intMatrix[col][row];
+                        for (int i = 1; i < numbersInProduct; i++)
+                        {
+                            tempProd *= intMatrix[col + i][row + i];
+                        }
+                        largestProduct = Math.Max(largestProduct, tempProd);
+                    }
+                }
             }
 
-            long largestDiagonal = CalculateLargestDiagonal(intMatrix, adjacentNumbers);
-
-            largestProduct = Math.Max(largestDiagonal, largestProduct);
             return largestProduct;
         }
 
