@@ -14,22 +14,40 @@ namespace Project_Euler
 
             for (int i = 0; i < intMatrix[0].Length; i++)
             {
-                long tempRowResult = LargestProductInSeries.FindLargestProduct(adjacentNumbers, string.Join(separationString, intMatrix[i]));
+                long tempRowResult = LargestProductInSeries.FindLargestProduct(adjacentNumbers, intMatrix[i]);
 
                 int[] currentCoulmn = intMatrix.Select(row => row[i]).ToArray();
-                long tempColumnResult = LargestProductInSeries.FindLargestProduct(adjacentNumbers, string.Join(separationString, currentCoulmn));
+                long tempColumnResult = LargestProductInSeries.FindLargestProduct(adjacentNumbers, currentCoulmn);
 
 
+                largestProduct = Math.Max(Math.Max(tempColumnResult, tempRowResult), largestProduct);
+            }
 
-                if (tempRowResult > largestProduct)
+            long largestDiagonal = CalculateLargestDiagonal(intMatrix, adjacentNumbers);
+
+            return largestProduct;
+        }
+
+        private static long CalculateLargestDiagonal(int[][] intMatrix, int adjacentNumbers)
+        {
+            int[] diagonal = new int[intMatrix[0].Length];
+
+            for (int i = 0; i < intMatrix[0].Length; i++)
+            {
+                diagonal[i] = intMatrix[i][i];
+            }
+
+            long largestProduct = LargestProductInSeries.FindLargestProduct(adjacentNumbers, diagonal);
+
+            for (int i = 1; i < intMatrix[0].Length - adjacentNumbers; i++)
+            {
+                for (int j = 0; j < intMatrix[0].Length - i; j++)
                 {
-                    largestProduct = tempRowResult;
-                }
-                if (tempColumnResult > largestProduct)
-                {
-                    largestProduct = tempColumnResult;
+                    diagonal[j] = intMatrix[i][j];
+
                 }
             }
+
             return largestProduct;
         }
     }

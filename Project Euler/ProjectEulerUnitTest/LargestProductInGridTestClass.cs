@@ -29,7 +29,7 @@ namespace ProjectEulerUnitTest
         {
             int[][] intMatrix = new int[3][];
             intMatrix[0] = new int[] { 1, 2, 3 };
-            intMatrix[1] = new int[] { 1, 0, 0 };
+            intMatrix[1] = new int[] { 0, 0, 0 };
             intMatrix[2] = new int[] { 10, 0, 0 };
             int adjacentNumbers = 2;
 
