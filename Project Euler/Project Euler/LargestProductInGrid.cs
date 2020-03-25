@@ -19,7 +19,6 @@ namespace Project_Euler
                 int[] currentCoulmn = intMatrix.Select(row => row[i]).ToArray();
                 long tempColumnResult = LargestProductInSeries.FindLargestProduct(adjacentNumbers, currentCoulmn);
 
-
                 largestProduct = Math.Max(Math.Max(tempColumnResult, tempRowResult), largestProduct);
             }
 
@@ -46,11 +45,13 @@ namespace Project_Euler
             {
                 for (int j = 0; j < matrixSize - i; j++)
                 {
-                    diagonal[j] = intMatrix[i][j];
+                    diagonal[j] = intMatrix[i+j][j];
                     diagonalAbove[j] = intMatrix[j][i+j];
                 }
+
                 long tempProduct = LargestProductInSeries.FindLargestProduct(adjacentNumbers, diagonal);
                 long tempProductTwo = LargestProductInSeries.FindLargestProduct(adjacentNumbers, diagonalAbove);
+
                 largestProduct = Math.Max(Math.Max(tempProduct, tempProductTwo), largestProduct);
             
             }
